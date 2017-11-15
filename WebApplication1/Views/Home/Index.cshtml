@@ -1,4 +1,18 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-Саш, приветики :)
+Добавь сообщение!
+<div class="form-group">
+    <input type="text" class="form-control" id="1" />
+    <button class="btn btn-info" onclick="send()" href="">Добавить</button>
+</div>
+@foreach(var message in ViewBag.Messages)
+{
+    <div class="well">@message</div>
+}
+
+<script>
+    function send() {
+        $.post("@Url.Action("Add", "Home")", { message: $('#1').val() })
+    }
+</script>
